@@ -54,7 +54,7 @@ get_package_files() {
 }
 
 filter_executable() {
-    LANG=C xargs -r0 stat --printf "%F %a\t%n\0" |
+    LC_ALL=C xargs -r0 stat --printf "%F %a\t%n\0" |
     grep -ozP "^regular file \d?[1357]\d\d\t\K.*" |
     xargs -r0 file -N |
     grep -oP ".*(?=: ELF )"
